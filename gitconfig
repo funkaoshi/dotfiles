@@ -1,0 +1,16 @@
+[user]
+name = Ramanan Sivaranjan
+email = ramanan@funkaoshi.com
+
+[alias]
+co = checkout
+ci = commit
+br = branch
+
+[core]
+editor = vim
+
+[color]
+diff = auto
+status = auto
+branch = auto
