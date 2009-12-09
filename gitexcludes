@@ -1,0 +1,7 @@
+.DS_Store
+.svn
+CVS/
+*.o
+*.so.*
+*.so
+*.6
