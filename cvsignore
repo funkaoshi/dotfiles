@@ -1,0 +1,6 @@
+.git
+.gitignore
+*.6
+*.so.*
+*.so
+build
