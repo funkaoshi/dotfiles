@@ -9,13 +9,14 @@ set nocompatible
 " Enable filetype-specific indenting
 filetype indent plugin on
 
-
 " Enable syntax-highlighting.
 if has("syntax")
   syntax on
 endif
 
 colorscheme inkpot
+
+let c_space_errors = 1
 
 " Better command-line completion
 set wildmenu
@@ -34,6 +35,9 @@ set nowrap              " Don't wrap source code.
 set tabstop=3           " Number of spaces <tab> counts for.
 set shiftwidth=3        " Number of spaces used when autoindenting and indenting multiple lines
 set expandtab           " Tabs are turned to spaces.
+
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+
 
 " search settings
 set hlsearch            " Highlight search matches.
@@ -69,9 +73,12 @@ set viminfo='20,\"500   " Read/write a .viminfo file, don't store more than
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:>-,trail:·,eol:$
 
+
 "------------------------------------------------------------------------------
 " Abbreviations.
 "------------------------------------------------------------------------------
+
+imap jj <ESC>
 
 " Quit with 'q' instead of ':q'. VERY useful!
 map q :q<CR>
