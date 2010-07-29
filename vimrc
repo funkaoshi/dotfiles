@@ -11,12 +11,10 @@ filetype indent plugin on
 
 " Enable syntax-highlighting.
 if has("syntax")
-  syntax on
+    syntax on
 endif
 
 colorscheme inkpot
-
-let c_space_errors = 1
 
 " Better command-line completion
 set wildmenu
@@ -37,8 +35,11 @@ set softtabstop=4       " Backspace will erase the same number of spaces as shif
 set shiftwidth=4        " Number of spaces used when autoindenting and indenting multiple lines
 set expandtab           " Tabs are turned to spaces.
 
-autocmd FileType ruby setlocal sw=2 sts=2 ts=2
-autocmd FileType python setlocal sw=4 sts=4 ts=4
+if has("autocmd")
+    autocmd Filetype make setlocal sw=8 sts=8 ts=8 noexpandtab
+    autocmd FileType ruby setlocal sw=2 sts=2 ts=2
+    autocmd FileType python setlocal sw=4 sts=4 ts=4
+endif
 
 " search settings
 set hlsearch            " Highlight search matches.
@@ -64,21 +65,17 @@ set magic               " Use 'magic' patterns (extended regular expressions).
 set ttyfast             " We have a fast terminal connection.
 set encoding=utf-8      " Set default encoding to UTF-8.
 set nostartofline       " Do not jump to first character with page commands,
-                        " i.e., keep the cursor in the current column.
+" i.e., keep the cursor in the current column.
 set laststatus=2        " statusline on second last line
 set viminfo='20,\"500   " Read/write a .viminfo file, don't store more than
-                        " 50 lines of registers.
+" 50 lines of registers.
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:>-,trail:·,eol:¬
 nmap <leader>l :set list!<cr>
 
-
-"------------------------------------------------------------------------------
-" Abbreviations.
-"------------------------------------------------------------------------------
-
+" double j to enter command mode
 imap jj <ESC>
 
 " Quit with 'q' instead of ':q'. VERY useful!
@@ -88,13 +85,21 @@ map q :q<CR>
 nmap :W :w
 nmap :Q :q
 
-" automatically remove trailing whitespace before write
-function! StripTrailingWhitespace()
-    normal mZ
-    %s/\s\+$//e
-    if line("'Z") != line(".")
-        echo "Stripped whitespace\n"
-    endif
-    normal `Z
+function! Preserve(command)
+    "Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    execute a:command
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
 endfunction
-autocmd BufWritePre * :call StripTrailingWhitespace()
+
+" clean up trailing witespace
+nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
+
+if has("autocmd")
+    autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+endif
