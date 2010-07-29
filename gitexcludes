@@ -1,7 +1,9 @@
 .DS_Store
 .svn
 CVS/
+*.a
 *.o
 *.so.*
 *.so
 *.6
+core*
