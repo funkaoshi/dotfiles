@@ -29,20 +29,20 @@ set showcmd
 " text formating
 set autoindent
 set smartindent
-set nowrap              " Don't wrap source code. 
+set nowrap              " Don't wrap source code.
 
 " tabstops
-set tabstop=3           " Number of spaces <tab> counts for.
-set shiftwidth=3        " Number of spaces used when autoindenting and indenting multiple lines
+set tabstop=4           " Number of spaces <tab> counts for.
+set softtabstop=4       " Backspace will erase the same number of spaces as shiftwidth
+set shiftwidth=4        " Number of spaces used when autoindenting and indenting multiple lines
 set expandtab           " Tabs are turned to spaces.
 
-autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
-
+autocmd FileType ruby setlocal sw=2 sts=2 ts=2
+autocmd FileType python setlocal sw=4 sts=4 ts=4
 
 " search settings
 set hlsearch            " Highlight search matches.
 set incsearch           " Incremental search.
-set ignorecase
 set smartcase           " ignore case, unless search with captital letters
 
 " Allow backspacing over everything in insert mode.
@@ -71,7 +71,8 @@ set viminfo='20,\"500   " Read/write a .viminfo file, don't store more than
 
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:>-,trail:·,eol:¬
+nmap <leader>l :set list!<cr>
 
 
 "------------------------------------------------------------------------------
@@ -86,3 +87,14 @@ map q :q<CR>
 " Enable this if you mistype :w as :W or :q as :Q.
 nmap :W :w
 nmap :Q :q
+
+" automatically remove trailing whitespace before write
+function! StripTrailingWhitespace()
+    normal mZ
+    %s/\s\+$//e
+    if line("'Z") != line(".")
+        echo "Stripped whitespace\n"
+    endif
+    normal `Z
+endfunction
+autocmd BufWritePre * :call StripTrailingWhitespace()
