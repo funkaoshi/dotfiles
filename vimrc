@@ -3,6 +3,8 @@
 " Author: Ramanan Sivaranjan
 "------------------------------------------------------------------------------
 
+colorscheme wombat
+
 " turn off vi compatibility
 set nocompatible
 
@@ -13,8 +15,6 @@ filetype indent plugin on
 if has("syntax")
     syntax on
 endif
-
-colorscheme inkpot
 
 " Better command-line completion
 set wildmenu
@@ -38,7 +38,6 @@ set expandtab           " Tabs are turned to spaces.
 if has("autocmd")
     autocmd Filetype make setlocal sw=8 sts=8 ts=8 noexpandtab
     autocmd FileType ruby setlocal sw=2 sts=2 ts=2
-    autocmd FileType python setlocal sw=4 sts=4 ts=4
 endif
 
 " search settings
@@ -70,10 +69,19 @@ set laststatus=2        " statusline on second last line
 set viminfo='20,\"500   " Read/write a .viminfo file, don't store more than
 " 50 lines of registers.
 
+" change leader from \ to ,
+let mapleader=","
+
 " Tell vim which characters to show for expanded TABs,
 " trailing whitespace, and end-of-lines. VERY useful!
 set listchars=tab:>-,trail:·,eol:¬
 nmap <leader>l :set list!<cr>
+
+" open vimrc quickly
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" toggle nerd tree on or off
+nmap <leader>n :NERDTreeToggle<CR>
 
 " double j to enter command mode
 imap jj <ESC>
@@ -101,5 +109,9 @@ endfunction
 nmap <leader>$ :call Preserve("%s/\\s\\+$//e")<CR>
 
 if has("autocmd")
+    " clean up trailing white space on save
     autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+    " auto source vimrc when saved
+    autocmd BufWritePost .vimrc source $MYVIMRC
 endif
+
