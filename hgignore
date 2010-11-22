@@ -1,0 +1,10 @@
+syntax: glob
+# build files
+*.o
+*.pyc
+*.a
+*.so
+# swap and temp files
+*.swp
+# macos files
+.DS_Store

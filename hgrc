@@ -1,0 +1,10 @@
+[ui]
+username = Ramanan Sivarajan <not@vqvz.com>
+ignore = ~/.hgignore
+editor = vim
+verbose = true
+strict = true
+
+[diff]
+git = true
+showfunc = true
