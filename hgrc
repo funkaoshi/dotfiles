@@ -4,6 +4,7 @@ ignore = ~/.hgignore
 editor = vim
 verbose = true
 strict = true
+merge = merge
 
 [diff]
 git = true
