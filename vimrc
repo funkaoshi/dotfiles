@@ -9,7 +9,7 @@ colorscheme wombat
 set nocompatible
 
 " Enable filetype-specific indenting
-filetype indent plugin on
+filetype plugin indent on
 
 " Enable syntax-highlighting.
 if has("syntax")
