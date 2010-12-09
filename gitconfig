@@ -6,6 +6,7 @@
    co = checkout
    ci = commit
    br = branch
+   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 
 [core]
    editor = vim
