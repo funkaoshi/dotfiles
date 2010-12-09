@@ -5,3 +5,4 @@ setlocal shiftwidth=4
 setlocal smarttab
 setlocal expandtab
 setlocal autoindent
+setlocal nosmartindent

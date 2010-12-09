@@ -26,7 +26,7 @@ set showcmd
 
 " text formating
 set autoindent
-set smartindent
+set nosmartindent
 set nowrap              " Don't wrap source code.
 
 " tabstops

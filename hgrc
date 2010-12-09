@@ -9,3 +9,9 @@ merge = merge
 [diff]
 git = true
 showfunc = true
+
+[extensions]
+hgext.bookmarks =
+
+[bookmarks]
+track.current = True
