@@ -6,12 +6,16 @@ verbose = true
 strict = true
 merge = merge
 
+[alias]
+weekly = log -d -6 --template '{author|person} | {date|rfc822date} | changeset: {node|short}\n\n{desc}\n\n-------------------------------------------------------------------------------\n\n'
+
 [diff]
 git = true
 showfunc = true
 
 [extensions]
 hgext.bookmarks =
+hgattic = ~/local/src/hgattic/attic.py
 
 [bookmarks]
 track.current = True
