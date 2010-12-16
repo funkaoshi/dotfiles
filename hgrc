@@ -8,14 +8,22 @@ merge = merge
 
 [alias]
 weekly = log -d -6 --template '{author|person} | {date|rfc822date} | changeset: {node|short}\n\n{desc}\n\n-------------------------------------------------------------------------------\n\n'
+slog = log --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.slog
+nlog = log --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.nlog
+sglog = glog --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.sglog
+show = log -pr
 
 [diff]
 git = true
 showfunc = true
 
 [extensions]
-hgext.bookmarks =
-hgattic = ~/local/src/hgattic/attic.py
+color =
+bookmarks =
+graphlog =
+progress =
+parentrevspec =
+hgattic = /home/ramanan/local/src/hgattic/attic.py
 
 [bookmarks]
 track.current = True
