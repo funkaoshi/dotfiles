@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Volumes/SECCOM/sdlcportal/sigma/sdlcportal/management/commands'
+let g:netrw_dirhist_2='/Volumes/SECCOM/sdlcportal/sigma'
+let g:netrw_dirhist_3='/Users/ramanan/Downloads/reportlab-2.5/docs'
+let g:netrw_dirhist_4='/Volumes/SECCOM/sdlc/sigma/userfeedback/migrations'

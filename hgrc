@@ -1,16 +1,12 @@
 [ui]
 username = Ramanan Sivarajan <not@vqvz.com>
-ignore = ~/.hgignore
+ignore = /Users/ramanan/.hgignore
 editor = vim
 verbose = true
 strict = true
 merge = merge
 
 [alias]
-weekly = log -d -6 --template '{author|person} | {date|rfc822date} | changeset: {node|short}\n\n{desc}\n\n-------------------------------------------------------------------------------\n\n'
-slog = log --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.slog
-nlog = log --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.nlog
-sglog = glog --style=/home/ramanan/local/src/dotfiles/hgtemplates/map-cmdline.sglog
 show = log -pr
 
 [diff]
@@ -23,7 +19,4 @@ bookmarks =
 graphlog =
 progress =
 parentrevspec =
-hgattic = /home/ramanan/local/src/hgattic/attic.py
-
-[bookmarks]
-track.current = True
+hgattic = /Users/ramanan/local/src/hgattic/

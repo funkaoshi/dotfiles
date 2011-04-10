@@ -1,18 +1,19 @@
 [user]
-   name = Ramanan Sivaranjan
-   email = not@vqvz.com
+    name = Ramanan Sivaranjan
+    email = ramanan@funkaoshi.com
 
 [alias]
-   co = checkout
-   ci = commit
-   br = branch
-   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    co = checkout
+    ci = commit
+    br = branch
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    rpo = remote prune origin
 
 [core]
-   editor = vim
-	excludesfile = ~/.gitexcludes
+    editor = vim
+    excludesfile = ~/.gitexcludes
 
 [color]
-   diff = auto
-   status = auto
-   branch = auto
+    diff = auto
+    status = auto
+    branch = auto

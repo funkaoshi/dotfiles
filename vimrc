@@ -20,6 +20,8 @@ endif
 set wildmenu
 set wildmode=list:longest
 set wildchar=<TAB>
+set wildignore+=*.o,*.obj,*.pyc,.git,.hg,*.orig
+
 
 " Show partial commands in the last line of the screen
 set showcmd
@@ -28,6 +30,9 @@ set showcmd
 set autoindent
 set nosmartindent
 set nowrap              " Don't wrap source code.
+
+" default window size
+set columns=80
 
 " tabstops
 set tabstop=4           " Number of spaces <tab> counts for.
@@ -43,7 +48,7 @@ endif
 " search settings
 set hlsearch            " Highlight search matches.
 set incsearch           " Incremental search.
-set smartcase           " ignore case, unless search with captital letters
+set ignorecase
 
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
@@ -52,6 +57,7 @@ set backspace=indent,eol,start
 set nomodeline
 
 " misc
+set mouse=a             " use mouse
 set ruler               " Show the line and column numbers of the cursor.
 set showmode            " Show current mode.
 set showmatch           " Show matching brackets.
@@ -83,6 +89,9 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 " toggle nerd tree on or off
 nmap <leader>n :NERDTreeToggle<CR>
 
+" command-t options
+let g:CommandTMaxHeight = 10
+
 " double j to enter command mode
 imap jj <ESC>
 
@@ -113,5 +122,14 @@ if has("autocmd")
     autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
     " auto source vimrc when saved
     autocmd BufWritePost .vimrc source $MYVIMRC
+
+    " turn on omnicompletion
+    autocmd FileType python set omnifunc=pythoncomplete#Complete
+    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+    autocmd FileType c set omnifunc=ccomplete#Complete
 endif
 
