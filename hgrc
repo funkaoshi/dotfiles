@@ -1,6 +1,6 @@
 [ui]
-username = Ramanan Sivarajan <not@vqvz.com>
-ignore = /Users/ramanan/.hgignore
+username = Ramanan Sivarajan <ramanan@funkaoshi.com>
+ignore = ~/.hgignore
 editor = vim
 verbose = true
 strict = true
@@ -19,4 +19,3 @@ bookmarks =
 graphlog =
 progress =
 parentrevspec =
-hgattic = /Users/ramanan/local/src/hgattic/
