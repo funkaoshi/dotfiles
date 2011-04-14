@@ -6,6 +6,7 @@
     co = checkout
     ci = commit
     br = branch
+    st = status -sb
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     rpo = remote prune origin
 
