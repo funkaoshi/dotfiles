@@ -1,5 +1,5 @@
 [user]
-    name = Ramanan Sivaranjan
+	name = Ramanan Sivaranjan
     email = ramanan@funkaoshi.com
 
 [alias]
@@ -8,13 +8,20 @@
     br = branch
     st = status -sb
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    slog = log --pretty=slog --abbrev-commit --no-merges
+    review = log -p --reverse --no-merges
     rpo = remote prune origin
+    rmo = !sh -c 'git push origin :$1' -
+    rmbr = branch -d
 
 [core]
-    editor = vim
+	editor = vim
     excludesfile = ~/.gitexcludes
 
 [color]
     diff = auto
     status = auto
     branch = auto
+
+[pretty]
+    slog = "%Cred %h %Creset%s%Cblue — %an "
