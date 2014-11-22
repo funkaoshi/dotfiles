@@ -2,32 +2,33 @@
 alias ll='ls -l'
 alias hgrep='history | grep'
 alias vimrc='mvim ~/.vimrc'
+alias restartz='source ~/.zshrc'
 
 # tunnels
-alias melbourne='ssh -f -N -L 9000:localhost:9000 -L 9001:localhost:9001 -L 8099:localhost:8099 -L 9002:localhost:9002 -L 9003:localhost:9003 melbourne'
-alias europe='ssh -f -N -L 8083:172.16.225.128:80 -L 8080:localhost:80 europe'
-alias newcastle='ssh -f -N -L 8100:localhost:8099 newcastle.sdelements.com'
+alias melbourne='ssh -f -N -L 5762:localhost:5762 -L 9000:localhost:9000 -L 9001:localhost:9001 -L 8099:localhost:8099 melbourne'
+alias europe='ssh -f -N -L 8083:172.16.225.128:80 -L 8080:localhost:80 67.205.74.212'
+alias newcastle='ssh -f -N -L 9005:localhost:9000 -L 8100:localhost:8099 newcastle.sdelements.com'
 alias admin_tunnel='ssh -L 8101:localhost:8099'
 alias tokyo='ssh sdelements@tokyo'
+alias monitor='ssh -f -N -L 2300:172.16.14.27:80 -L 2301:172.16.14.27:9099 198.72.105.181'
 
 # handy django aliases
-alias activate='source bin/activate'
 alias djrun='python manage.py runserver'
+alias djgun='python manage.py run_gunicorn --settings=gunicorn_settings -b 0.0.0.0'
 alias djsync='python manage.py syncdb'
 alias djtest='python manage.py test --settings=fast_settings'
 alias djmigrate='python manage.py migrate'
 alias djschema='python manage.py schemamigration --auto'
 alias djshell='python manage.py shell'
 alias djc='python manage.py collectstatic --noinput'
+alias djcelery='python manage.py celeryd --autoreload --purge'
 alias dumpdata='python manage.py dumpdata'
 alias loaddata='python manage.py loaddata'
 alias dj='python manage.py'
 alias djangocode='cd ~/local/envs/sdlc/lib/python2.6/site-packages/django/'
-alias djbuild='python fixtures/build_large_deployment_data/build.py'
+alias djbuild='python manage.py build_large_deployment_data'
 alias emailserver='python -m smtpd -n -c DebuggingServer localhost:1025'
-
-# git flow shortcut
-alias gf='git flow'
+alias prettyjson='python -m json.tool | pygmentize -l javascript'
 
 # post review shortcut
-alias pr='post-review --bugs-closed=$(git name-rev --name-only HEAD | sed "s/\(.*\)\([0-9][0-9][0-9][0-9]\)\(.*\)/\2/") --branch=$(git name-rev --name-only HEAD) --tracking-branch=origin/develop --guess-description --guess-summary --open'
+alias pr='rbt post --bugs-closed=$(git name-rev --name-only HEAD | sed "s/\(.*\)\(\d+\)\(.*\)/\2/") --branch=$(git name-rev --name-only HEAD) --tracking-branch=origin/develop --guess-description --guess-summary --open'
