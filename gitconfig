@@ -8,11 +8,12 @@
     br = branch
     st = status -sb
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    slog = log --pretty=slog --abbrev-commit --no-merges
+    slog = log --pretty=oneline --decorate --abbrev-commit --no-merges
     review = log -p --reverse --no-merges
     rpo = remote prune origin
-    rmo = !sh -c 'git push origin :$1' -
+    rmo = push origin --delete
     rmbr = branch -d
+    serve = daemon --export-all --base-path=.
 
 [core]
 	editor = vim
@@ -25,3 +26,10 @@
 
 [pretty]
     slog = "%Cred %h %Creset%s%Cblue — %an "
+
+[push]
+	default = simple
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
