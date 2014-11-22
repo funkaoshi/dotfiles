@@ -28,8 +28,10 @@ export CFLAGS=-Qunused-arguments
 export CPPFLAGS=-Qunused-arguments
 
 # virtualenv environments
-export WORKON_HOME="/Users/ramanan/local/envs"
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME="$HOME/local/envs"
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # include aliases
 if [ -f ~/.aliases ]; then
@@ -66,7 +68,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen bundle python
 
-antigen theme mh
+antigen theme https://gist.github.com/funkaoshi/fda87c35eaa4b8649813 mh-ram
 
 antigen apply
 
