@@ -14,9 +14,11 @@ git = true
 showfunc = true
 
 [extensions]
-color =
 bookmarks =
+color =
 graphlog =
-progress =
 parentrevspec =
+progress =
 purge =
+strip =
+transplant =
