@@ -28,7 +28,7 @@
     slog = "%Cred %h %Creset%s%Cblue — %an "
 
 [push]
-	default = simple
+	default = current 
 
 [filter "media"]
 	clean = git-media-clean %f
