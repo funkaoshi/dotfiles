@@ -9,10 +9,6 @@ fi
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
 
-# ruby virtualenv setup; this loads RVM into a shell session as a function
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-
 #
 # Set up Antigen
 #
