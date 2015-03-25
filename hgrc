@@ -4,7 +4,7 @@ ignore = ~/.hgignore
 editor = vim
 verbose = true
 strict = true
-merge = merge
+merge = internal:merge
 
 [alias]
 show = log -pr
