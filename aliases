@@ -4,19 +4,11 @@ alias hgrep='history | grep'
 alias vimrc='mvim ~/.vimrc'
 alias restartz='source ~/.zshrc'
 
-# tunnels
-alias melbourne='ssh -f -N -L 5762:localhost:5762 -L 9000:localhost:9000 -L 9001:localhost:9001 -L 8099:localhost:8099 melbourne'
-alias europe='ssh -f -N -L 8083:172.16.225.128:80 -L 8080:localhost:80 67.205.74.212'
-alias newcastle='ssh -f -N -L 9005:localhost:9000 -L 8100:localhost:8099 newcastle.sdelements.com'
-alias admin_tunnel='ssh -L 8101:localhost:8099'
-alias tokyo='ssh sdelements@tokyo'
-alias monitor='ssh -f -N -L 2300:172.16.14.27:80 -L 2301:172.16.14.27:9099 198.72.105.181'
-
 # handy django aliases
-alias djrun='python manage.py runserver'
+alias djrun='python manage.py runserver localhost:3000'
 alias djgun='python manage.py run_gunicorn --settings=gunicorn_settings -b 0.0.0.0'
 alias djsync='python manage.py syncdb'
-alias djtest='python manage.py test --settings=fast_settings'
+alias djtest='python manage.py test --settings=test_local_settings --nomigrations'
 alias djmigrate='python manage.py migrate'
 alias djschema='python manage.py schemamigration --auto'
 alias djshell='python manage.py shell'
@@ -29,6 +21,9 @@ alias djangocode='cd ~/local/envs/sdlc/lib/python2.6/site-packages/django/'
 alias djbuild='python manage.py build_large_deployment_data'
 alias emailserver='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias prettyjson='python -m json.tool | pygmentize -l javascript'
+alias gund='gunicorn_django'
+
+alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited)'
 
 # post review shortcut
 alias pr='rbt post --bugs-closed=$(git name-rev --name-only HEAD | sed "s/\(.*\)\(\d+\)\(.*\)/\2/") --branch=$(git name-rev --name-only HEAD) --tracking-branch=origin/develop --guess-description --guess-summary --open'
