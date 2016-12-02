@@ -1,3 +1,4 @@
+
 .DS_Store
 .svn
 CVS/
@@ -5,6 +6,7 @@ CVS/
 *.o
 *.so.*
 *.so
+*.swo
 *.6
 core*
 *.swp

@@ -8,12 +8,12 @@
     br = branch
     st = status -sb
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    slog = log --pretty=oneline --decorate --abbrev-commit --no-merges
+    slog = log --pretty=oneline --decorate --abbrev-commit
     review = log -p --reverse --no-merges
     rpo = remote prune origin
     rmo = push origin --delete
     rmbr = branch -d
-    serve = daemon --export-all --base-path=.
+    serve = daemon --export-all --base-path=. --reuseaddr --informative-errors --verbose
 
 [core]
 	editor = vim
@@ -28,8 +28,14 @@
     slog = "%Cred %h %Creset%s%Cblue — %an "
 
 [push]
-	default = current 
+	default = current
 
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+[rerere]
+	enabled = true
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
