@@ -1,4 +1,10 @@
-# zmodload zsh/zprof
+# Set up Antibody
+source <(antibody init)
+antibody bundle < .plugins.txt
+
+# Turn on completions
+autoload -Uz compinit
+compinit
 
 # virtualenv environments
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
@@ -9,24 +15,5 @@ fi
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
 
-#
-# Set up Antigen
-#
-
-source ~/.antigensrc/antigen.zsh
-
-antigen use oh-my-zsh
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle git
-antigen bundle python
-antigen bundle virtualenvwrapper
-antigen bundle history
-antigen bundle tmux
-antigen bundle fabric
-
-antigen theme https://gist.github.com/funkaoshi/fda87c35eaa4b8649813 mh-ram
-
-antigen apply
-
-# zprof
+# iterm shell integration
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
