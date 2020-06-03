@@ -1,0 +1,3 @@
+[submodule "sandboxd"]
+	path = sandboxd
+	url = git@github.com:benvan/sandboxd.git

@@ -1,14 +1,25 @@
-# useful aliases
+# uteful aliases
 alias ll='ls -l'
-alias hgrep='history | grep'
-alias vimrc='mvim ~/.vimrc'
+alias hgrep='history 1 | grep'
+alias vimrc='vim ~/.vimrc'
 alias restartz='source ~/.zshrc'
+
+alias ia="open $1 -a /Applications/iA\ Writer.app"
+
+alias vim='nvim'
+alias vi='nvim'
+
+alias mydns='scutil --dns | grep nameserver | sort -u'
+
+# kinit
+alias ksde='kinit rsivaranjan@SDELEMENTS.COM'
+alias ksec='kinit rsivaranjan@SECURITYCOMPASS.COM'
 
 # handy django aliases
 alias djrun='python manage.py runserver localhost:3000'
 alias djgun='python manage.py run_gunicorn --settings=gunicorn_settings -b 0.0.0.0'
 alias djsync='python manage.py syncdb'
-alias djtest='python manage.py test --settings=test_local_settings --nomigrations'
+alias djtest='pytest --no-migrations --ds=test_local_settings --ignore=node_modules'
 alias djmigrate='python manage.py migrate'
 alias djschema='python manage.py schemamigration --auto'
 alias djshell='python manage.py shell'
@@ -24,6 +35,8 @@ alias prettyjson='python -m json.tool | pygmentize -l javascript'
 alias gund='gunicorn_django'
 
 alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited)'
+
+alias update_zsh_plugins='antibody bundle < ~/local/dotfiles/zsh_plugins.txt > ~/local/dotfiles/zsh_plugins.sh'
 
 # post review shortcut
 alias pr='rbt post --bugs-closed=$(git name-rev --name-only HEAD | sed "s/\(.*\)\(\d+\)\(.*\)/\2/") --branch=$(git name-rev --name-only HEAD) --tracking-branch=origin/develop --guess-description --guess-summary --open'

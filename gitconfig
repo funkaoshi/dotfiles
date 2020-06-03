@@ -6,7 +6,7 @@
     co = checkout
     ci = commit
     br = branch
-    st = status -sb
+    st = status -sb -uno
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     slog = log --pretty=oneline --decorate --abbrev-commit
     review = log -p --reverse --no-merges
@@ -33,9 +33,14 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
+
 [rerere]
 	enabled = true
+
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+
+[submodule]
+	recurse = true
