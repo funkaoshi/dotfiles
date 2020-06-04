@@ -2,6 +2,8 @@ import os
 
 exclude = ['README', 'zsh_plugins.txt', 'install.py']
 
+os.system('antibody bundle < zsh_plugins.txt > zsh_plugins.sh')
+
 home = os.path.expanduser('~')
 here = os.path.abspath('.')
 
@@ -17,7 +19,7 @@ for f in os.listdir('.'):
 
     cmd = 'ln -sf %s %s' % (local_file, install_file)
 
-    print cmd
+    print(cmd)
 
     os.system(cmd)
 
