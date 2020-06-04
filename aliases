@@ -6,9 +6,6 @@ alias restartz='source ~/.zshrc'
 
 alias ia="open $1 -a /Applications/iA\ Writer.app"
 
-alias vim='nvim'
-alias vi='nvim'
-
 alias mydns='scutil --dns | grep nameserver | sort -u'
 
 # kinit

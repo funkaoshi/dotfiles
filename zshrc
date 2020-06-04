@@ -1,10 +1,10 @@
 # zmodload zsh/zprof
 
 # Set up Antibody
-source ~/local/dotfiles/zsh_plugins.sh
+source ~/.zsh_plugins.sh
 
 # Set up lazyloading for slow start up scripts (virtualenv, etc)
-source ~/local/dotfiles/sandboxd/sandboxd
+source ~/.sandboxd/sandboxd
 
 # Turn on completions
 autoload -Uz compinit

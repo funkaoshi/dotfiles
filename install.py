@@ -1,6 +1,6 @@
 import os
 
-exclude = ['README', 'install.py']
+exclude = ['README', 'zsh_plugins.txt', 'install.py']
 
 home = os.path.expanduser('~')
 here = os.path.abspath('.')
