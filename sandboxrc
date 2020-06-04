@@ -1,0 +1,10 @@
+# Setup virtualenv wrapper
+sandbox_init_virtualenvwrapper(){
+  source /usr/local/bin/virtualenvwrapper.sh
+}
+sandbox_hook virtualenvwrapper workon  
+sandbox_hook virtualenvwrapper mkvirtualenv
+sandbox_hook virtualenvwrapper mktmpenv
+sandbox_hook virtualenvwrapper lsvirtualenv
+sandbox_hook virtualenvwrapper showvirtualenv
+sandbox_hook virtualenvwrapper rmvirtualenv
