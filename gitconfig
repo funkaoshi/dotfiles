@@ -14,6 +14,7 @@
     rmo = push origin --delete
     rmbr = branch -d
     serve = daemon --export-all --base-path=. --reuseaddr --informative-errors --verbose
+	quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
 [core]
 	editor = vim
@@ -41,6 +42,5 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-
-[submodule]
-	recurse = true
+[pull]
+	ff = only

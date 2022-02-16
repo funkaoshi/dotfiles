@@ -1,26 +1,18 @@
 # set history variables
-HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=~/.histfile
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
 
 # Ensure languages are set
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export GOPATH="$HOME/Documents/Code/go"
-
 export GEM_HOME=$HOME/gems
-
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-export PATH="/usr/local/opt/ncurses/bin:$PATH"
-export PATH="/usr/local/share/npm/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-export PATH="$HOME/local/bin:$PATH"
-export PATH="$HOME/gems/bin:$PATH"
-
 
 export EDITOR="vim"
 export CLICOLOR=1
@@ -28,9 +20,11 @@ export CLICOLOR=1
 
 if [[ $OSTYPE =~ "darwin*" ]] then
     # On OSX: only build 64-bit binaries, fix clang errors, link openssl
-    export CCFLAGS="-I/usr/local/opt/openssl/include -I$(xcrun --show-sdk-path)/usr/include/sasl"
+    export CCFLAGS="$CCFLAGS -I/usr/local/opt/openssl@1.1/include"
+    export CCFLAGS="$CCFLAGS -I$(xcrun --show-sdk-path)/usr/include/sasl"
+    export CCFLAGS="$CCFLAGS -I/usr/local/opt/libffi/include"
     export CPPFLAGS=$CCFLAGS
-    export LDFLAGS="-L/usr/local/opt/openssl/lib"
+    export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/libffi/lib"
 fi
 
 # set my usual python path and django settings

@@ -4,13 +4,18 @@ alias hgrep='history 1 | grep'
 alias vimrc='vim ~/.vimrc'
 alias restartz='source ~/.zshrc'
 
+alias opsignin='eval $(op signin my)'
+
 alias ia="open $1 -a /Applications/iA\ Writer.app"
 
 alias mydns='scutil --dns | grep nameserver | sort -u'
 
 # kinit
+alias oksde='op get item etnukk5lujcifcb4cqhgg7tdt4 --fields password | kinit --password-file=STDIN rsivaranjan@SDELEMENTS.COM'
+alias oksec='op get item etnukk5lujcifcb4cqhgg7tdt4 --fields password | kinit --password-file=STDIN rsivaranjan@SECURITYCOMPASS.COM'
 alias ksde='kinit rsivaranjan@SDELEMENTS.COM'
 alias ksec='kinit rsivaranjan@SECURITYCOMPASS.COM'
+
 
 # handy django aliases
 alias djrun='python manage.py runserver localhost:3000'
