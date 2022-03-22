@@ -4,7 +4,7 @@
 source ~/.zsh_plugins.sh
 
 # Set up lazyloading for slow start up scripts (virtualenv, etc)
-source ~/.sandboxd/sandboxd
+source ~/.sandboxd
 
 # Turn on completions
 autoload -Uz compinit
@@ -24,17 +24,20 @@ autoload -Uz compinit
 # set paths
 typeset -U PATH path
 path=(
-    /usr/local/share/npm/bin
-    /usr/local/opt/postgresql@9.6/bin
-    /usr/local/opt/ncurses/bin
-    /usr/local/opt/ruby/bin
+    /opt/homebrew/bin
+    /opt/homebrew/sbin
+    /opt/homebrew/opt/ruby/bin
     /usr/local/bin
     /usr/local/sbin
-    /usr/local/go/bin
     $HOME/local/bin
-    $HOME/gems/bin
     $path[@]
 )
+
+# activate pyenv!
+eval "$(pyenv init - zsh)"
+
+# activate rbenv!
+eval "$(rbenv init - zsh)"
 
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
@@ -44,6 +47,15 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+
+if [[ $OSTYPE =~ "darwin*" ]] then
+    # On OSX: only build 64-bit binaries, fix clang errors, link openssl
+    export CFLAGS="$CFLAGS -I$(brew --prefix openssl@1.1)/include"
+    export CFLAGS="$CFLAGS -I$(xcrun --show-sdk-path)/usr/include/sasl"
+    export CFLAGS="$CFLAGS -I$(brew --prefix libffi)/include"
+    export CPPFLAGS=$CFLAGS
+    export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix libffi)/lib"
+fi
 
 # zprof
 
