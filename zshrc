@@ -1,7 +1,13 @@
 # zmodload zsh/zprof
 
-# Set up Antibody
-source ~/.zsh_plugins.sh
+# clone antidote if necessary
+[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
+
+# source antidote
+. ~/.antidote/antidote.zsh
+
+# generate and source plugins from ~/.zsh_plugins.txt
+antidote load
 
 # Set up lazyloading for slow start up scripts (virtualenv, etc)
 source ~/.sandboxd
@@ -34,13 +40,16 @@ path=(
 )
 
 # activate pyenv!
-eval "$(pyenv init - zsh)"
+eval "$(pyenv init --path)"
 
 # activate rbenv!
-eval "$(rbenv init - zsh)"
+eval "$(rbenv init -)"
 
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
+
+# fast fuzzy search bindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # iterm shell integration
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
@@ -58,4 +67,5 @@ if [[ $OSTYPE =~ "darwin*" ]] then
 fi
 
 # zprof
+
 

@@ -1,5 +1,8 @@
 # uteful aliases
+alias cat='bat'
+alias ls='exa'
 alias ll='ls -l'
+alias vim='nvim'
 alias hgrep='history 1 | grep'
 alias vimrc='vim ~/.vimrc'
 alias restartz='source ~/.zshrc'

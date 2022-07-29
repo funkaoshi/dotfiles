@@ -1,5 +1,5 @@
 A collection of dotfiles I use on various workstations at work, and sometimes 
 at home. These are all stored in this directory without the initial '.'. To use 
 them, I simply symbollicaly link them where they belong, usually in my home 
-directory. The script install.py will do this. (It will also install antigen,
-which I currently use with zsh.)
+directory. The script install.py will do this.
+

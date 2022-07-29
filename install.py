@@ -22,8 +22,3 @@ for f in os.listdir('.'):
     print(cmd)
 
     os.system(cmd)
-
-# clone antigen (zsh plugin manager)
-# zshrc assumes it can load antigen.zsh from here.
-if not os.path.exists(os.path.join(home, ".antigensrc")):
-    os.system('git clone git@github.com:zsh-users/antigen.git ~/.antigensrc')
