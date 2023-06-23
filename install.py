@@ -2,8 +2,6 @@ import os
 
 exclude = ['README', 'zsh_plugins.txt', 'install.py']
 
-os.system('antibody bundle < zsh_plugins.txt > zsh_plugins.sh')
-
 home = os.path.expanduser('~')
 here = os.path.abspath('.')
 
