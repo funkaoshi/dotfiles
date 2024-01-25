@@ -39,11 +39,15 @@ path=(
     $path[@]
 )
 
-# activate pyenv!
-eval "$(pyenv init --path)"
+if command -v pyenv >/dev/null 2>&1; then
+    # activate pyenv!
+    eval "$(pyenv init --path)"
+fi
 
-# activate rbenv!
-eval "$(rbenv init -)"
+if command -v rbenv >/dev/null 2>&1; then
+    # activate rbenv!
+    eval "$(rbenv init -)"
+fi
 
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
