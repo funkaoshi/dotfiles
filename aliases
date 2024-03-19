@@ -1,4 +1,3 @@
-alias cat='bat'
 alias ls='exa'
 alias ll='ls -l'
 alias hgrep='history 1 | grep'

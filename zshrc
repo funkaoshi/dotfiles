@@ -1,16 +1,16 @@
 # zmodload zsh/zprof
 
 # clone antidote if necessary
-[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
+[[ -e ~/.antidote ]] || git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 
 # source antidote
 . ~/.antidote/antidote.zsh
 
+# Lazy Load NVM
+export NVM_LAZY_LOAD=true
+
 # generate and source plugins from ~/.zsh_plugins.txt
 antidote load
-
-# Set up lazyloading for slow start up scripts (virtualenv, etc)
-source ~/.sandboxd
 
 # Turn on completions
 autoload -Uz compinit
@@ -33,9 +33,13 @@ path=(
     /opt/homebrew/bin
     /opt/homebrew/sbin
     /opt/homebrew/opt/ruby/bin
+    /opt/homebrew/opt/libpq/bin
+    /opt/homebrew/opt/icu4c/bin
     /usr/local/bin
     /usr/local/sbin
+    $HOME/.local/bin
     $HOME/local/bin
+    $HOME/go/bin
     $path[@]
 )
 
@@ -66,10 +70,10 @@ if [[ $OSTYPE =~ "darwin*" ]] then
     export CFLAGS="$CFLAGS -I$(brew --prefix openssl@1.1)/include"
     export CFLAGS="$CFLAGS -I$(xcrun --show-sdk-path)/usr/include/sasl"
     export CFLAGS="$CFLAGS -I$(brew --prefix libffi)/include"
+    export CFLAGS="$CFLAGS -I$(brew --prefix libpq)/include"
     export CPPFLAGS=$CFLAGS
-    export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix libffi)/lib"
+    export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix libffi)/lib -L$(brew --prefix libpq)/lib -L$(brew --prefix icu4c)lib"
 fi
 
 # zprof
-
 
