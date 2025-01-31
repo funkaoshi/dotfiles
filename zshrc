@@ -15,6 +15,7 @@ antidote load
 # Turn on completions
 autoload -Uz compinit
 
+
 # speed up compinit by only checking cache once a day
 # https://gist.github.com/ctechols/ca1035271ad134841284
 () {
@@ -43,6 +44,8 @@ path=(
     $path[@]
 )
 
+fpath=(~/.zsh $fpath)
+
 if command -v pyenv >/dev/null 2>&1; then
     # activate pyenv!
     eval "$(pyenv init --path)"
@@ -53,8 +56,13 @@ if command -v rbenv >/dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
+[[ -s ~/.aliases.local ]] && source ~/.aliases.local
 
 # fast fuzzy search bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -76,4 +84,3 @@ if [[ $OSTYPE =~ "darwin*" ]] then
 fi
 
 # zprof
-

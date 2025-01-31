@@ -27,3 +27,6 @@ alias prettyjson='python -m json.tool | pygmentize -l javascript'
 alias gund='gunicorn_django'
 
 alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited)'
+
+
+alias antora='npx antora'
