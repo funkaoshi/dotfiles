@@ -21,6 +21,9 @@
     excludesfile = ~/.gitexcludes
 	autocrlf = input
 
+[init]
+	defaultBranch = develop
+
 [color]
     diff = auto
     status = auto
@@ -29,22 +32,43 @@
 [pretty]
     slog = "%Cred %h %Creset%s%Cblue — %an "
 
-[push]
-	default = current
+[branch]
+	sort = -committerdate
 
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+[tag]
+	sort = version:refname
+
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 
 [rerere]
 	enabled = true
+	autoupdate = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[pull]
+	ff = only
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
 	process = git-lfs filter-process
-[pull]
-	ff = only
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+
 [credential]
 	helper = store
