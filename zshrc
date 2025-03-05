@@ -12,9 +12,10 @@ export NVM_LAZY_LOAD=true
 # generate and source plugins from ~/.zsh_plugins.txt
 antidote load
 
+fpath=(/Users/ramanan/.docker/completions $fpath)
+
 # Turn on completions
 autoload -Uz compinit
-
 
 # speed up compinit by only checking cache once a day
 # https://gist.github.com/ctechols/ca1035271ad134841284

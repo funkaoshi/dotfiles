@@ -14,7 +14,8 @@
     rmo = push origin --delete
     rmbr = branch -d
     serve = daemon --export-all --base-path=. --reuseaddr --informative-errors --verbose
-	quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+    quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+    b = "branch --format='%(color:#cccc00)%(objectname:short) %(color:red)%(committerdate:short) %(color:bold white)%(refname:short)'"
 
 [core]
 	editor = vim
