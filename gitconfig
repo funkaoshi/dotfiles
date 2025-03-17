@@ -49,6 +49,9 @@
 	enabled = true
 	autoupdate = true
 
+[merge]
+    ff = only
+
 [fetch]
 	prune = true
 	pruneTags = true
