@@ -22,4 +22,4 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 # set my usual python path and django settings
 export DJANGO_SETTINGS_MODULE=settings
 
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
