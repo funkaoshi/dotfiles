@@ -1,5 +1,5 @@
 [user]
-	name = Ramanan Sivaranjan
+    name = Ramanan Sivaranjan
     email = ramanan@funkaoshi.com
 
 [alias]
@@ -7,23 +7,29 @@
     ci = commit
     br = branch
     st = status -sb -uno
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    slog = log --pretty=oneline --decorate --abbrev-commit
-    review = log -p --reverse --no-merges
     rpo = remote prune origin
     rmo = push origin --delete
     rmbr = branch -d
+    # display the local branches in a pretty format
+    b = "branch --format='%(color:#cccc00)%(objectname:short) %(color:red)%(committerdate:short) %(color:bold white)%(refname:short)'"
+    # displays the commit history "graphically"
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    # tidier short log
+    slog = log --pretty=oneline --decorate --abbrev-commit
+    # look at the commits in commit order, for code reviews
+    review = log -p --reverse --no-merges
+    # host local .git repo to share commits
     serve = daemon --export-all --base-path=. --reuseaddr --informative-errors --verbose
     quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
-    b = "branch --format='%(color:#cccc00)%(objectname:short) %(color:red)%(committerdate:short) %(color:bold white)%(refname:short)'"
 
 [core]
-	editor = vim
+    editor = vim
     excludesfile = ~/.gitexcludes
-	autocrlf = input
+    # clean up line endings
+    autocrlf = input
 
 [init]
-	defaultBranch = develop
+    defaultBranch = develop
 
 [color]
     diff = auto
@@ -34,45 +40,46 @@
     slog = "%Cred %h %Creset%s%Cblue — %an "
 
 [branch]
-	sort = -committerdate
+    sort = -committerdate
 
 [tag]
-	sort = version:refname
+    sort = version:refname
 
 [diff]
-	algorithm = histogram
-	colorMoved = plain
-	mnemonicPrefix = true
-	renames = true
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
 
 [rerere]
-	enabled = true
-	autoupdate = true
+    enabled = true
+    autoupdate = true
 
 [merge]
+    # I hate merge commits
+    ff = only
+
+[pull]
     ff = only
 
 [fetch]
-	prune = true
-	pruneTags = true
-	all = true
+    prune = true
+    pruneTags = true
+    all = true
 
 [push]
-	default = current
-	autoSetupRemote = true
-
-[pull]
-	ff = only
+    default = current
+    autoSetupRemote = true
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    required = true
+    process = git-lfs filter-process
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
 
 [credential]
-	helper = store
+    helper = store
