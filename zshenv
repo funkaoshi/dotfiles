@@ -12,8 +12,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export GEM_HOME=$HOME/gems
-
 export EDITOR="vim"
 export CLICOLOR=1
 

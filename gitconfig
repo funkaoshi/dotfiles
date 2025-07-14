@@ -64,8 +64,9 @@
 
 [fetch]
     prune = true
-    pruneTags = true
     all = true
+    # This makes it impossible to create a tag locally
+    # pruneTags = true
 
 [push]
     default = current

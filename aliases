@@ -2,7 +2,6 @@ alias ll='ls -l'
 alias hgrep='history 1 | grep'
 alias vimrc='vim ~/.vimrc'
 alias restartz='source ~/.zshrc'
-alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 
 alias ia="open $1 -a /Applications/iA\ Writer.app"
 
