@@ -6,9 +6,6 @@
 # source antidote
 . ~/.antidote/antidote.zsh
 
-# Lazy Load NVM
-export NVM_LAZY_LOAD=true
-
 # generate and source plugins from ~/.zsh_plugins.txt
 antidote load
 
@@ -42,24 +39,11 @@ path=(
     $HOME/.local/bin
     $HOME/local/bin
     $HOME/go/bin
+    $HOME/.cargo/bin
     $path[@]
 )
 
 fpath=(~/.zsh $fpath)
-
-if command -v pyenv >/dev/null 2>&1; then
-    # activate pyenv!
-    eval "$(pyenv init --path)"
-fi
-
-if command -v rbenv >/dev/null 2>&1; then
-    # activate rbenv!
-    eval "$(rbenv init -)"
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
@@ -76,12 +60,15 @@ bindkey '^[[B' history-substring-search-down
 
 if [[ $OSTYPE =~ "darwin*" ]] then
     # On OSX: only build 64-bit binaries, fix clang errors, link openssl
-    export CFLAGS="$CFLAGS -I$(brew --prefix openssl@1.1)/include"
+    export CFLAGS="$CFLAGS -I$(brew --prefix openssl@3.5)/include"
     export CFLAGS="$CFLAGS -I$(xcrun --show-sdk-path)/usr/include/sasl"
     export CFLAGS="$CFLAGS -I$(brew --prefix libffi)/include"
     export CFLAGS="$CFLAGS -I$(brew --prefix libpq)/include"
     export CPPFLAGS=$CFLAGS
-    export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix libffi)/lib -L$(brew --prefix libpq)/lib -L$(brew --prefix icu4c)lib"
+    export LDFLAGS="-L$(brew --prefix openssl@3.5)/lib -L$(brew --prefix libffi)/lib -L$(brew --prefix libpq)/lib -L$(brew --prefix icu4c)lib"
 fi
+
+# use mise for managing python, ruby, etc, versions
+eval "$(~/.local/bin/mise activate zsh)"
 
 # zprof
