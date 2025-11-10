@@ -1,5 +1,4 @@
 mafredri/zsh-async
-lukechilds/zsh-nvm
 sindresorhus/pure
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
