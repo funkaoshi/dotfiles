@@ -9,12 +9,7 @@
 # set fpath before loading plugins (needed for completions)
 fpath=($HOME/.zsh $HOME/.docker/completions $fpath)
 
-# use antidote static bundle for faster startup
-zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
-[[ -f $zsh_plugins ]] || antidote bundle <~/.zsh_plugins.txt >$zsh_plugins
-source $zsh_plugins
-
-# turn on completions
+# turn on completions (must run before plugins, specifically before fzf-tab)
 autoload -Uz compinit
 
 # speed up compinit by only checking cache once a day
@@ -28,6 +23,14 @@ autoload -Uz compinit
         compinit -C
     fi
 }
+
+# use antidote static bundle for faster startup
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
+[[ -f $zsh_plugins ]] || antidote bundle <~/.zsh_plugins.txt >$zsh_plugins
+source $zsh_plugins
+
+# starship prompt
+eval "$(starship init zsh)"
 
 # set paths
 typeset -U PATH path
@@ -63,5 +66,8 @@ fi
 
 # use mise for managing python, ruby, etc, versions
 eval "$(mise activate zsh)"
+
+# fzf-tab: directory preview on cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
 
 # zprof

@@ -1,5 +1,4 @@
-mafredri/zsh-async
-sindresorhus/pure
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
+Aloxaf/fzf-tab
 zdharma-continuum/fast-syntax-highlighting
