@@ -9,22 +9,14 @@ alias mydns='scutil --dns | grep nameserver | sort -u'
 
 # handy django aliases
 alias djrun='python manage.py runserver localhost:3000'
-alias djgun='python manage.py run_gunicorn --settings=gunicorn_settings -b 0.0.0.0'
-alias djsync='python manage.py syncdb'
 alias djtest='pytest --no-migrations --ds=test_local_settings --ignore=node_modules'
 alias djmigrate='python manage.py migrate'
-alias djschema='python manage.py schemamigration --auto'
 alias djshell='python manage.py shell'
 alias djc='python manage.py collectstatic --noinput'
-alias djcelery='python manage.py celeryd --autoreload --purge'
 alias dumpdata='python manage.py dumpdata'
 alias loaddata='python manage.py loaddata'
 alias dj='python manage.py'
-alias djangocode='cd ~/local/envs/sdlc/lib/python2.6/site-packages/django/'
 alias djbuild='python manage.py build_large_deployment_data'
-alias emailserver='python -m smtpd -n -c DebuggingServer localhost:1025'
-alias prettyjson='python -m json.tool | pygmentize -l javascript'
-alias gund='gunicorn_django'
 
 alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited)'
 

@@ -6,10 +6,13 @@
 # source antidote
 . ~/.antidote/antidote.zsh
 
-# generate and source plugins from ~/.zsh_plugins.txt
-antidote load
+# set fpath before loading plugins (needed for completions)
+fpath=($HOME/.zsh $HOME/.docker/completions $fpath)
 
-fpath=(/Users/ramanan/.docker/completions $fpath)
+# use antidote static bundle for faster startup
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
+[[ -f $zsh_plugins ]] || antidote bundle <~/.zsh_plugins.txt >$zsh_plugins
+source $zsh_plugins
 
 # Turn on completions
 autoload -Uz compinit
@@ -43,8 +46,6 @@ path=(
     $path[@]
 )
 
-fpath=(~/.zsh $fpath)
-
 # include aliases
 [[ -s ~/.aliases ]] && source ~/.aliases
 [[ -s ~/.aliases.local ]] && source ~/.aliases.local
@@ -58,17 +59,16 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-if [[ $OSTYPE =~ "darwin*" ]] then
-    # On OSX: only build 64-bit binaries, fix clang errors, link openssl
-    export CFLAGS="$CFLAGS -I$(brew --prefix openssl@3.5)/include"
-    export CFLAGS="$CFLAGS -I$(xcrun --show-sdk-path)/usr/include/sasl"
-    export CFLAGS="$CFLAGS -I$(brew --prefix libffi)/include"
-    export CFLAGS="$CFLAGS -I$(brew --prefix libpq)/include"
+if [[ $OSTYPE == darwin* ]] && (( $+commands[brew] )); then
+    # On macOS: fix clang errors, link openssl, libffi, libpq
+    _brew=$(brew --prefix)
+    export CFLAGS="-I$_brew/opt/openssl@3/include -I$_brew/opt/libffi/include -I$_brew/opt/libpq/include"
     export CPPFLAGS=$CFLAGS
-    export LDFLAGS="-L$(brew --prefix openssl@3.5)/lib -L$(brew --prefix libffi)/lib -L$(brew --prefix libpq)/lib -L$(brew --prefix icu4c)lib"
+    export LDFLAGS="-L$_brew/opt/openssl@3/lib -L$_brew/opt/libffi/lib -L$_brew/opt/libpq/lib -L$_brew/opt/icu4c/lib"
+    unset _brew
 fi
 
 # use mise for managing python, ruby, etc, versions
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 
 # zprof

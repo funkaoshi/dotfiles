@@ -15,9 +15,4 @@ export LC_ALL=en_US.UTF-8
 export EDITOR="vim"
 export CLICOLOR=1
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-
-# set my usual python path and django settings
-export DJANGO_SETTINGS_MODULE=settings
-
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
