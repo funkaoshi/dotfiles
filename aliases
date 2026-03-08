@@ -2,23 +2,7 @@ alias ll='ls -l'
 alias hgrep='history 1 | grep'
 alias vimrc='vim ~/.vimrc'
 alias restartz='source ~/.zshrc'
-
 alias ia="open $1 -a /Applications/iA\ Writer.app"
-
 alias mydns='scutil --dns | grep nameserver | sort -u'
-
-# handy django aliases
-alias djrun='python manage.py runserver localhost:3000'
-alias djtest='pytest --no-migrations --ds=test_local_settings --ignore=node_modules'
-alias djmigrate='python manage.py migrate'
-alias djshell='python manage.py shell'
-alias djc='python manage.py collectstatic --noinput'
-alias dumpdata='python manage.py dumpdata'
-alias loaddata='python manage.py loaddata'
-alias dj='python manage.py'
-alias djbuild='python manage.py build_large_deployment_data'
-
 alias docker-clean='docker rm -v $(docker ps -a -q -f status=exited)'
-
-alias antora='npx antora'
 alias qb='just --justfile ~/Code/qbt/qb-dev-cli/justfile'

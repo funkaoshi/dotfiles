@@ -1,9 +1,9 @@
 # zmodload zsh/zprof
 
-# clone antidote if necessary
+# use antidote for managing zsh plugins. clone latest version if its missing.
 [[ -e ~/.antidote ]] || git clone --depth=1 https://github.com/mattmc3/antidote.git ~/.antidote
 
-# source antidote
+# load antidote
 . ~/.antidote/antidote.zsh
 
 # set fpath before loading plugins (needed for completions)
@@ -14,7 +14,7 @@ zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins.zsh
 [[ -f $zsh_plugins ]] || antidote bundle <~/.zsh_plugins.txt >$zsh_plugins
 source $zsh_plugins
 
-# Turn on completions
+# turn on completions
 autoload -Uz compinit
 
 # speed up compinit by only checking cache once a day
@@ -34,13 +34,9 @@ typeset -U PATH path
 path=(
     /opt/homebrew/bin
     /opt/homebrew/sbin
-    /opt/homebrew/opt/ruby/bin
-    /opt/homebrew/opt/libpq/bin
-    /opt/homebrew/opt/icu4c/bin
     /usr/local/bin
     /usr/local/sbin
     $HOME/.local/bin
-    $HOME/local/bin
     $HOME/go/bin
     $HOME/.cargo/bin
     $path[@]
@@ -52,9 +48,6 @@ path=(
 
 # fast fuzzy search bindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# iterm shell integration
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
